@@ -13,3 +13,20 @@ anything regarding bash will be posted here
 > (for example, the source code must be made freely available).
 >
 > oreilly bash, 3ed
+
+> bash’s command-line editing interface is **readline**. It is actually a library of
+> software developed for the GNU project that can be used by applications
+> requiring a textbased interface. It provides editing and text-manipulation
+> features to make it easier for the user to enter and edit text. Just as
+> as importantly, it allows standardization, in terms of both key strokes and
+> customization methods, across all applications that use it.
+
+## oreilly bash, 3ed
+
+* `fc` - load last run cmd
+* `!!` - repeat last cmd
+* `bind` - check binded keystrokes
+  * `^I` - `<TAB>`
+  * `^H` - backspace
+  * `^J` - linefeed
+  * `^{` - escape
