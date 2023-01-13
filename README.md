@@ -11,22 +11,33 @@ anything regarding bash will be posted here
 > distribution concept: the copyleft. Copylefted software may be freely
 > distributed so long as no restrictions are placed on further distribution
 > (for example, the source code must be made freely available).
->
-> oreilly bash, 3ed
 
-> bash’s command-line editing interface is **readline**. It is actually a library of
+> bash’s command-line editing interface is **readline**. It is actually a
+> library of
 > software developed for the GNU project that can be used by applications
 > requiring a textbased interface. It provides editing and text-manipulation
 > features to make it easier for the user to enter and edit text. Just as
 > as importantly, it allows standardization, in terms of both key strokes and
 > customization methods, across all applications that use it.
 
-## oreilly bash, 3ed
 
 * `fc` - load last run cmd
 * `!!` - repeat last cmd
+* `history`
+  * `history -c` - delete history
+* `stty`
 * `bind` - check binded keystrokes
   * `^I` - `<TAB>`
   * `^H` - backspace
   * `^J` - linefeed
   * `^{` - escape
+* prompts
+  * PS1/2/3/4
+* `hash`
+  * `hash -r` - remove everything
+  * `hash -d` *name* - remove specific entry
+  * `hash -p` *name* - insert specific entry
+* `cdable_vars` - variable for changing dirs
+* `export [-p]` - show env vars
+* `basename` and `dirname`
+* `builtin SHELL-BUILTIN` - run shell built-in inside another function
