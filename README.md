@@ -1,8 +1,10 @@
 Sun  1 Jan 2023 08:18:08 UTC
 
+anything regarding bash will be posted here
+
 # This is m7tkr's bash page
 
-anything regarding bash will be posted here
+## oreilly bash, 3ed
 
 > The GNU project was started by Richard Stallman of the Free Software
 > Foundation (FSF) for the purpose of creating a UNIX-compatible operating
@@ -20,6 +22,17 @@ anything regarding bash will be posted here
 > as importantly, it allows standardization, in terms of both key strokes and
 > customization methods, across all applications that use it.
 
+> `.bashrc` is deafult env file in bash
+
+**Order of precedence** for various sources of commands in shell:
+
+1. Aliases
+2. Keywords such as `function` and others, like `if` and `for`
+3. Functions
+4. Built-ins like `cd` and `type`
+5. Scripts and executable programs in `PATH`  env var
+
+### cmds
 
 * `fc` - load last run cmd
 * `!!` - repeat last cmd
@@ -39,5 +52,6 @@ anything regarding bash will be posted here
   * `hash -p` *name* - insert specific entry
 * `cdable_vars` - variable for changing dirs
 * `export [-p]` - show env vars
+* `type -a <cmdname>` - show all exec of <cmdname>
 * `basename` and `dirname`
 * `builtin SHELL-BUILTIN` - run shell built-in inside another function
