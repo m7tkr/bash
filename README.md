@@ -1,6 +1,4 @@
-Sun  1 Jan 2023 08:18:08 UTC
-
-anything regarding bash will be posted here
+20230101081808
 
 # This is m7tkr's bash page
 
@@ -45,13 +43,59 @@ anything regarding bash will be posted here
   * `^J` - linefeed
   * `^{` - escape
 * prompts
-  * PS1/2/3/4
+  * `PS1` - main prompt
+  * `PS2` - continuation
+  * `PS3` - used by `select`
+  * `PS4`
 * `hash`
-  * `hash -r` - remove everything
-  * `hash -d` *name* - remove specific entry
-  * `hash -p` *name* - insert specific entry
 * `cdable_vars` - variable for changing dirs
 * `export [-p]` - show env vars
 * `type -a <cmdname>` - show all exec of <cmdname>
 * `basename` and `dirname`
 * `builtin SHELL-BUILTIN` - run shell built-in inside another function
+* `if`
+  * `[]` vs `[[]]`
+    > The second version is identical to the first except that word splitting
+    > and pathname expansion are not performed on the words within brackets
+  * *string comparison operators*
+  * *arithmetic **test** operators*
+  * *file attribute checking*
+  * `if` operates on exit status
+  * `&&` and `||` - logical operators
+    > Same as above. However, unlike those operators, `-a` and `-o` are only
+    > available inside a `test` conditional expression
+  * `!` - placed before brackets for negation
+* `for`
+  ```for name [in list]
+     do
+         statements that can use $name...
+     done
+   ```
+  in case `[in list]` is not specified `$@` is default
+* use `IFS` - internal field separator
+
+  `TAB`, `LINEFEED` and `space` by default
+* `command` - shell built-in, disables alias and function lookup
+* `case`
+  ```
+  case expression in
+      pattern1 )
+          statements ;;
+      pattern2 )
+          statements ;;
+  ...
+  esac
+  ```
+  > Any of the patterns can actually be several patterns separated by pipe
+  > characters (|).
+* `select`
+  ```
+  select name [in list]
+  do
+       statements that can use $name...
+  done
+  ```
+* `while` vs `until`
+
+  > In while, the loop executes as long as the condition is true; in until,
+  > it runs as long as the condition is false.
