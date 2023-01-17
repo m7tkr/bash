@@ -1,0 +1,6 @@
+#!/usr/local/bin/bash
+
+folder="$1"
+search="$2"
+
+/usr/bin/find "$folder" -iname "$search"
