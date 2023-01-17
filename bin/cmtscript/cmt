@@ -1,0 +1,11 @@
+#!/usr/local/bin/bash
+
+while read; do
+    if [ -z "$(echo $REPLY | grep '^#')" ]; then
+        echo "# ${REPLY}"
+    else
+        echo "${REPLY#\# *}"
+    fi
+done
+
+
