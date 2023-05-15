@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# use this script w/ ssh-agent loaded
+# currently works in ubuntu
+# ask for ssh-add password if not specified in cli
+
+eval `ssh-agent`
+ssh-add "$1"
+
+directories=$(find ~/shared -maxdepth 1 -type d)
+
+for directory in $directories; do
+    if [[ $(basename $directory) != "shared" ]]; then
+        cd $directory
+        if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "$(basename $directory)"
+            git push origin
+        fi
+    fi
+done
+
+eval `ssh-agent -k`

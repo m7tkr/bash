@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+read -a "content"
+
+command_name="${content[0]}"
+var1="${content[1]}"
+var2="${content[2]}"
+
+function frac {
+    #printf '\\frac{%b}{%b}' "$var1" "$var2"
+    echo "\frac{$var1}{$var2}"
+}
+
+function sub {
+    printf '%s_{%s}\n' "$var1" "$var2"
+}
+
+function sup {
+    printf '%s^{%s}\n' "$var1" "$var2"
+}
+
+function mathin {
+    printf '\\(  \\)'
+    exit 0
+}
+
+function misc {
+    printf '\\%s{%s}' $command_name
+    exit 0
+}
+
+####################block
+
+function blk {
+    env="${content[1]}"
+    value="${content[2]}"
+
+    printf '\\%b{%b}\n\n\\end' $env $value
+}
+
+function mathbl {
+    printf '\[\n\n\]'
+}
+
+$command_name 2>/dev/null
+cmd_exit=$?
+
+if [ "$cmd_exit" = 127 ]; then
+    misc
+fi
