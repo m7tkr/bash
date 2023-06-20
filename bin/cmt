@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# author: m7tkr
+# purpose: commenting stuff
+# last modified: 20230620205852
+# usage: cmt <lang>
+
+# set lang argument
+language="$1"
+
+# check passed lang in the list
+# of available languages
+case $language in
+    *sh  ) symbol='#'                   ;;
+    *tex ) symbol='%'                   ;;
+    *vi  ) symbol='"'                   ;;
+       * ) echo 'language is not found' ;;
+esac
+
+# prepend or cut off comment char
+# to/from the beginning of the line
+while read; do
+    if [ -z "`grep "$symbol" <<< "$REPLY"`" ]; then
+        echo "$symbol ${REPLY}"
+    else
+        echo "${REPLY#$symbol }"
+    fi
+done

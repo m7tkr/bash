@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-entr -cp "$1" <<< $(echo "$1")
+# author: m7tkr
+# purpose: m7tkr entr modification
+# last modified: 20230620213645
+# usage: mentr <cmd>
+
+cmd="$1"
+
+entr -cp "$cmd" <<< $(echo "$cmd")

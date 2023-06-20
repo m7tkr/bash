@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
+# author: m7rkt
+# print date using format: YYYYMMDDHHMMSS in GMT
+# last modified: 20230620210604
+# usage: isosec
+
 date "+%Y%m%d%H%M%S"
