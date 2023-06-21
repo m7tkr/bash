@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# author: m7tkr
+# purpose: ddg search using lynx
+# last modified: 20230620221558
+# usage: ddg <query>
+
+query=$*
+
+# set default lynx command, cause alias won't be recognized
+lynx="lynx -cfg $HOME/lynx.cfg -lss $HOME/mmono.lss"
+
+$lynx "https://duckduckgo.com/?t=ffab&q=$query"
