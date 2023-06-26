@@ -8,23 +8,36 @@
 # usage: read function desriptions
 
 # read string 
-read -a "content"
+read -ra content
+
 
 command_name="${content[0]}"
-var1="${content[1]}"
-var2="${content[2]}"
+var1=${content[1]}
+var2=${content[2]}
 
 function frac {
-    #printf '\\frac{%b}{%b}' "$var1" "$var2"
+#     printf '\frac{%b}{%b}\n' $var1 $var2
     echo "\frac{$var1}{$var2}"
 }
 
 function sub {
-    printf '%s_{%s}\n' "$var1" "$var2"
+#     printf '%b_{%b}\n' $var1 $var2
+    echo "$var1""_""{$var2}"
 }
 
 function sup {
-    printf '%s^{%s}\n' "$var1" "$var2"
+#     printf '%b^{%b}\n' $var1 $var2
+    echo "$var1^{$var2}"
+}
+
+function sqrt {
+    if [ -n "$var2" ]; then
+        echo "\sqrt[$var1]{$var2}"
+#         printf '\sqrt%b{%b}' $var1 $var2
+    else
+        echo "\sqrt{$var1}"
+#         printf '\sqrt{%b}' $var1
+    fi
 }
 
 function mathin {
@@ -43,11 +56,15 @@ function blk {
     env="${content[1]}"
     value="${content[2]}"
 
-    printf '\\%b{%b}\n\n\\end' $env $value
+    printf '\\'"$env""{$value}\n\n"'\\end'"{$value}" $env $value
 }
 
 function mathbl {
     printf '\[\n\n\]'
+}
+
+function mathbr {
+    printf '\\left(\n\n\\right)\n'
 }
 
 

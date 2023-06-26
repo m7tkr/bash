@@ -15,7 +15,7 @@ eval `ssh-agent`
 
 # get ssh private key
 key="$1"
-ssh-add "${key:='/home/m7tkr/.ssh/ubuntu_ed25519'}"
+ssh-add "${key:=/home/m7tkr/.ssh/ubuntu_ed25519}"
 
 # get list of directories
 directories="$(find ~/shared -maxdepth 1 -type d)"
