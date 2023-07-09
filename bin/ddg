@@ -8,6 +8,6 @@
 query=$*
 
 # set default lynx command, cause alias won't be recognized
-lynx="lynx -cfg $HOME/lynx.cfg -lss $HOME/mmono.lss"
+lynx="lynx -cfg $HOME/lynx.cfg -lss $HOME/mmono.lss -nopause -noreferer"
 
 $lynx "https://duckduckgo.com/?t=ffab&q=$query"
