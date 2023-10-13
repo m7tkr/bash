@@ -19,7 +19,7 @@ esac
 
 # prepend or cut off comment char
 # to/from the beginning of the REPLY
-while read -r; do
+while IFS= read -r; do
     if [ -z "`grep "$symbol" <<< "$REPLY"`" ]; then
         echo "$symbol ${REPLY}"
     else
