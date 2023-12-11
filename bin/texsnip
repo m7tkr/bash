@@ -46,7 +46,7 @@ function mathin {
 }
 
 function misc {
-    printf '\\%s{%s}' $command_name
+    printf '\\%s{%s}' "$var1" "$var2"
     exit 0
 }
 
