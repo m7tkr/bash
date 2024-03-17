@@ -2,75 +2,33 @@
 
 # author: m7tkr
 # purpose: snippets for tex typesetting system
-# last modified: 20230619213645
-# usage: texsnip (trigger)
+# last modified: 20240317020625
 # usage: <func-name> <arg1> <arg2> 
-# usage: read function desriptions
 
-# read string 
-read -ra content
+# read string, -a creates an array, requires name of array to be
+# specified
+read -ra REPLY
 
-
-command_name="${content[0]}"
-var1=${content[1]}
-var2=${content[2]}
-
-function frac {
-#     printf '\frac{%b}{%b}\n' $var1 $var2
-    echo "\frac{$var1}{$var2}"
-}
-
-function sub {
-#     printf '%b_{%b}\n' $var1 $var2
-    echo "$var1""_""{$var2}"
-}
-
-function sup {
-#     printf '%b^{%b}\n' $var1 $var2
-    echo "$var1^{$var2}"
-}
+COMMAND_NAME="${REPLY[0]}"
+VAR_1=${REPLY[1]}
+VAR_2=${REPLY[2]}
 
 function sqrt {
-    if [ -n "$var2" ]; then
-        echo "\sqrt[$var1]{$var2}"
-#         printf '\sqrt%b{%b}' $var1 $var2
-    else
-        echo "\sqrt{$var1}"
-#         printf '\sqrt{%b}' $var1
-    fi
+  case "$VAR_2" in
+    ""  ) echo "\sqrt{$VAR_1}" ;;
+     *  ) echo "\sqrt[$VAR_1]{$VAR_2}" ;;
+  esac
 }
 
-function mathin {
-    printf '\\(  \\)'
-    exit 0
-}
-
-function misc {
-    printf '\\%s{%s}' "$var1" "$var2"
-    exit 0
-}
-
-# here starts block function
-
-function blk {
-    env="${content[1]}"
-    value="${content[2]}"
-
-    printf '\\'"$env""{$value}\n\n"'\\end'"{$value}" $env $value
-}
-
-function mathbl {
-    printf '\[\n\n\]'
-}
-
-function mathbr {
-    printf '\\left(\n\n\\right)\n'
-}
-
-
-$command_name 2>/dev/null
-cmd_exit=$?
-
-if [ "$cmd_exit" = 127 ]; then
-    misc
-fi
+case "$COMMAND_NAME" in
+  *frac*    ) echo "\frac{$VAR_1}{$VAR_2}"  ;;
+  *sub*     ) echo "$VAR_1""_""{$VAR_2}"       ;;
+  *sub*     ) echo "$VAR_1^{$VAR_2}"        ;;
+  *sqrt*    ) sqrt ;;
+  *blk*     ) printf '\\'"$VAR_1""{$VAR_2}\n\n"'\\end'"{$VAR_2}"\
+    $VAR_1 $VAR_2;;
+  *mathin*  ) printf '\\(  \\)'          ;;
+  *mathbl*  ) printf '\[\n\n\]'         ;;
+  *mathbr*  ) printf '\\left(\n\n\\right)' ;;
+  *misc*    ) printf '\\%s{%s}' "$VAR_1" "$VAR_2" ;;
+esac
